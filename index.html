@@ -3,303 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THE MAJESTIC | الفخامة المطلقة</title>
+    <title>THE MAJESTIC | Luxury Experience</title>
     
-    <!-- خطوط جوجل الفاخرة -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <!-- خطوط جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <!-- مكتبة الأنميشن -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <style>
         :root {
-            --gold: #c5a059;
-            --dark: #080808;
-            --light-gold: #e5c78a;
-            --white: #ffffff;
+            --gold: #d4af37;
+            --black: #050505;
+            --dark-gray: #111;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
-            background-color: var(--dark);
-            color: var(--white);
+            background-color: var(--black);
+            color: white;
             font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* تحسين التجاوب للهيدر */
-        nav {
+        /* القائمة العلوية */
+        header {
             position: fixed;
             top: 0; width: 100%;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: center; /* توسيط الشعار في الجوال */
-            align-items: center;
+            padding: 15px;
+            text-align: center;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            background: rgba(8, 8, 8, 0.95);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--gold);
-            letter-spacing: 5px;
+            letter-spacing: 4px;
         }
 
-        /* البطل - Hero متجاوب */
+        /* الواجهة الرئيسية التفاعلية */
         .hero {
             height: 100vh;
-            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.7), var(--dark)), 
-                        url('https://images.unsplash.com/photo-1514361892635-6b07e31e75f9?q=80&w=1000&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.5), var(--black)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .hero h1 {
             font-family: 'Amiri', serif;
-            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-size: 3.5rem;
             color: var(--gold);
-            line-height: 1.2;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
         }
 
-        /* الحاوية الرئيسية */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 20px;
+        /* المنيو التفاعلي - بطاقات Glassmorphism */
+        .content-section {
+            padding: 40px 20px 100px 20px; /* مسافة إضافية للأسفل بسبب القائمة */
         }
 
-        /* قسم من نحن */
-        .about {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .about h2 {
+        .section-title {
             font-family: 'Amiri', serif;
             font-size: 2.2rem;
             color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .about p {
-            font-weight: 300;
-            color: #ccc;
-            max-width: 700px;
-            margin: auto;
-            font-size: 1.1rem;
-        }
-
-        /* المنيو - متجاوب بالكامل */
-        .category-title {
-            font-family: 'Amiri', serif;
-            font-size: 2rem;
-            color: var(--gold);
             text-align: center;
-            margin: 50px 0 30px;
-            border-bottom: 1px solid var(--gold);
-            display: inline-block;
-            width: 100%;
-            padding-bottom: 10px;
+            margin: 40px 0;
         }
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        .food-card {
-            background: #111;
-            border-radius: 12px;
+        .menu-item {
+            background: var(--glass);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            margin-bottom: 25px;
             overflow: hidden;
-            transition: 0.4s;
-            border: 1px solid #1a1a1a;
+            transition: transform 0.3s ease;
+            position: relative;
         }
 
-        .food-card img {
+        .menu-item:active {
+            transform: scale(0.96); /* تأثير الضغط بالجوال */
+        }
+
+        .menu-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
+            filter: brightness(0.8);
         }
 
-        .food-info {
+        .menu-detail {
             padding: 20px;
+            background: linear-gradient(to top, var(--black), transparent);
         }
 
-        .food-info h3 {
+        .menu-detail h3 {
             font-family: 'Amiri', serif;
-            font-size: 1.4rem;
-            color: var(--light-gold);
-            margin-bottom: 10px;
-        }
-
-        .food-info p {
-            font-size: 0.85rem;
-            color: #888;
-            height: 40px;
-            overflow: hidden;
-        }
-
-        .price {
-            display: block;
-            margin-top: 15px;
-            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
             color: var(--gold);
-            font-weight: bold;
         }
 
-        /* قسم الفروع - متجاوب */
-        #branches {
-            background: #0c0c0c;
-            padding: 60px 20px;
-            text-align: center;
+        .menu-detail p {
+            font-size: 0.9rem;
+            color: #bbb;
+            margin-top: 5px;
         }
 
-        .branch-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .branch-btn {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .branch-btn:active {
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
             background: var(--gold);
-            color: var(--dark);
+            color: black;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
         }
 
-        /* الفوتر والخصوصية */
-        footer {
-            padding: 40px 20px;
+        /* الفروع - أزرار تفاعلية ضخمة */
+        .branch-card {
+            background: #111;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-right: 4px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* القائمة السفلية (App Style) */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(20px);
+            height: 65px;
+            border-radius: 35px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #888;
+            font-size: 0.7rem;
             text-align: center;
-            border-top: 1px solid #1a1a1a;
+        }
+
+        .nav-item.active {
+            color: var(--gold);
+        }
+
+        .nav-item i {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+
+        /* قسم الخصوصية */
+        .privacy-box {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
             font-size: 0.8rem;
             color: #555;
+            text-align: center;
         }
 
-        .privacy-text {
-            max-width: 600px;
-            margin: 20px auto;
-            font-size: 0.75rem;
-            line-height: 1.5;
+        footer {
+            text-align: center;
+            padding: 40px 20px 120px 20px;
+            color: #444;
+            font-size: 0.7rem;
         }
 
-        /* تعديلات خاصة للجوال فقط */
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.8rem; }
-            .menu-grid { grid-template-columns: 1fr; } /* عمود واحد فقط */
-            .food-card img { height: 180px; }
+        /* تحسينات الحركة */
+        [data-aos] {
+            transition-timing-function: cubic-bezier(.4, 0, .2, 1);
         }
+
     </style>
 </head>
 <body>
 
-    <nav>
+    <header>
         <div class="logo">MAJESTIC</div>
-    </nav>
+    </header>
 
-    <section class="hero">
-        <h1 data-aos="fade-up">تذوق الفخامة</h1>
-        <p data-aos="fade-up" data-aos-delay="200">تجربة عصرية لا تُنسى</p>
+    <!-- واجهة البطل -->
+    <section class="hero" id="home">
+        <h1 data-aos="zoom-in">L'ÉLITE</h1>
+        <p data-aos="fade-up" data-aos-delay="200">الفخامة في كل لمسة</p>
     </section>
 
-    <div class="container">
+    <div class="content-section">
         
-        <section class="about" data-aos="fade-up">
-            <h2>من نحن</h2>
-            <p>نحن لسنا مجرد مطعم، نحن وجهة لأصحاب الذوق الرفيع. نقدم أطباقنا بروح عصرية مستوحاة من أعرق المطابخ العالمية.</p>
-        </section>
+        <!-- من نحن -->
+        <div id="about" style="text-align: center; margin-bottom: 60px;" data-aos="fade-up">
+            <h2 class="section-title">من نحن</h2>
+            <p style="color: #888; font-weight: 300; line-height: 2;">نحن نجمع بين عراقة الماضي وحداثة المستقبل لنقدم لك تجربة طعام تتجاوز التوقعات، في قلب أجواء صُممت خصيصاً للنخبة.</p>
+        </div>
 
-        <!-- قسم المقبلات -->
-        <h2 class="category-title" data-aos="fade-left">المقبلات</h2>
-        <div class="menu-grid">
-            <div class="food-card" data-aos="zoom-in">
-                <img src="https://images.unsplash.com/photo-1546241072-48010ad2862c?auto=format&fit=crop&w=500" alt="Starter">
-                <div class="food-info">
-                    <h3>بوراتا إيطالية</h3>
-                    <p>جبنة البوراتا الطازجة مع زيت الترافل الفاخر.</p>
-                    <span class="price">85 SAR</span>
-                </div>
-            </div>
-            <div class="food-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=500" alt="Starter">
-                <div class="food-info">
-                    <h3>أخطبوط مشوي</h3>
-                    <p>أخطبوط مطهو ببطء على الطريقة الإسبانية.</p>
-                    <span class="price">120 SAR</span>
-                </div>
+        <!-- الأطباق الرئيسية -->
+        <h2 class="section-title" id="menu">قائمة الطعام</h2>
+
+        <!-- طبق 1 -->
+        <div class="menu-item" data-aos="fade-up">
+            <span class="price-tag">450 SAR</span>
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop" alt="Steak">
+            <div class="menu-detail">
+                <h3>ستيك توماهوك</h3>
+                <p>لحم فاخر مشوي ببطء مع أعشاب برية وصوص الفلفل الأسود.</p>
             </div>
         </div>
 
-        <!-- قسم الأطباق الرئيسية -->
-        <h2 class="category-title" data-aos="fade-left">الأطباق الرئيسية</h2>
-        <div class="menu-grid">
-            <div class="food-card" data-aos="zoom-in">
-                <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=500" alt="Main">
-                <div class="food-info">
-                    <h3>ستيك بلاك أنغوس</h3>
-                    <p>قطعة لحم فاخرة تقدم مع الخضار المشوية.</p>
-                    <span class="price">350 SAR</span>
-                </div>
+        <!-- طبق 2 -->
+        <div class="menu-item" data-aos="fade-up">
+            <span class="price-tag">280 SAR</span>
+            <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?q=80&w=600&auto=format&fit=crop" alt="Lobster">
+            <div class="menu-detail">
+                <h3>كركند مشوي</h3>
+                <p>كركند طازج من البحر مباشرة مع زبدة الثوم والليمون.</p>
             </div>
-            <div class="food-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500" alt="Main">
-                <div class="food-info">
-                    <h3>سلمون مشوي</h3>
-                    <p>سلمون طازج بصلصة الليمون والزبدة.</p>
-                    <span class="price">180 SAR</span>
-                </div>
+        </div>
+
+        <!-- الفروع -->
+        <h2 class="section-title" id="branches">فروعنا</h2>
+        
+        <a href="https://maps.google.com" class="branch-card" data-aos="fade-right">
+            <div>
+                <h3>فرع الرياض</h3>
+                <p style="font-size: 0.8rem; color: #888;">حي حطين - شارع الأمير تركي</p>
             </div>
+            <span style="color: var(--gold);">📍</span>
+        </a>
+
+        <a href="https://maps.google.com" class="branch-card" data-aos="fade-right" data-aos-delay="100">
+            <div>
+                <h3>فرع دبي</h3>
+                <p style="font-size: 0.8rem; color: #888;">دبي مول - مطل على النافورة</p>
+            </div>
+            <span style="color: var(--gold);">📍</span>
+        </a>
+
+        <!-- الخصوصية -->
+        <div id="privacy" class="privacy-box">
+            <strong>سياسة الخصوصية</strong>
+            <p style="margin-top: 10px;">نحن نلتزم بحماية بياناتك الشخصية وتوفير تصفح آمن. جميع الصور والمحتويات هي ملكية فكرية لمطعم ذا ماجستيك.</p>
         </div>
 
     </div>
 
-    <!-- قسم الفروع -->
-    <section id="branches">
-        <h2 style="font-family: 'Amiri'; color: var(--gold); font-size: 2rem;">فروعنا</h2>
-        <div class="branch-list">
-            <a href="https://maps.google.com" class="branch-btn">فرع الرياض - السليمانية</a>
-            <a href="https://maps.google.com" class="branch-btn">فرع جدة - طريق الملك</a>
-        </div>
-    </section>
+    <!-- القائمة السفلية التفاعلية -->
+    <div class="bottom-nav">
+        <a href="#home" class="nav-item"><span>🏠</span><br>الرئيسية</a>
+        <a href="#menu" class="nav-item"><span>🍴</span><br>المنيو</a>
+        <a href="#branches" class="nav-item"><span>📍</span><br>الفروع</a>
+        <a href="#about" class="nav-item"><span>✨</span><br>قصتنا</a>
+    </div>
 
-    <!-- الخصوصية والفوتر -->
     <footer>
-        <div class="privacy-text">
-            <strong>سياسة الخصوصية:</strong> نحن نهتم ببياناتك. جميع المعلومات المستخدمة هنا هي لأغراض العرض فقط ولا نقوم بتخزين أي بيانات شخصية لزوارنا.
-        </div>
-        <p>© 2026 جميع الحقوق محفوظة لمطعم THE MAJESTIC</p>
+        <div class="logo" style="font-size: 1rem; opacity: 0.5;">MAJESTIC</div>
+        <p style="margin-top: 10px;">&copy; 2026 جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- سكربت الأنيميشن المتوافق مع الجوال -->
+    <!-- سكربتات التفاعل -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // تشغيل الأنميشن
         AOS.init({
-            duration: 800,
+            duration: 1000,
             once: true,
-            disable: 'mobile' // تعطيل الأنيميشن الثقيل في الجوال لزيادة السرعة
+            offset: 50
+        });
+
+        // تغيير حالة القائمة السفلية عند الضغط
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
         });
     </script>
 </body>
